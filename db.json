@@ -1,0 +1,68 @@
+{
+  "pokemon": [
+    {
+      "id": 1,
+      "name": "Bulbasaur",
+      "description": "Bulbasaur, known as Fushigidane in Japan, is the first Pokémon in Nintendo and Game Freak's Pokémon franchise's monster dictionary, called a Pokédex. Designed by Atsuko Nishida, Bulbasaur debuted in Pokémon Red and Blue as a Starter Pokémon.",
+      "type": [
+        "grass",
+        "poison"
+      ],
+      "favourite": true
+    },
+    {
+      "id": 7,
+      "name": "Squirtle",
+      "description": "Squirtle, known as Zenigame in Japan, is a Pokémon species in Nintendo and Game Freak's Pokémon franchise. It was designed by Atsuko Nishida. Its name was changed from Zenigame to Squirtle during the English localization of the series in order to give it a 'clever and descriptive name.'",
+      "type": [
+        "water"
+      ],
+      "favourite": false
+    },
+    {
+      "id": 4,
+      "name": "Charmander",
+      "description": "Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes. Its underside from the chest down and the soles of its feet are cream-colored. It has two small fangs visible in its upper jaw and two smaller fangs in its lower jaw. A fire burns at the tip of this Pokémon's slender tail and has blazed there since Charmander's birth.",
+      "type": [
+        "fire"
+      ],
+      "favourite": true
+    },
+    {
+      "id": 2,
+      "name": "ivysaur",
+      "description": "evolved bubs",
+      "type": "grass,poison",
+      "favourite": false
+    },
+    {
+      "id": 555,
+      "name": "Garchomp",
+      "description": "Roarrrrr",
+      "type": [
+        "ground",
+        "dragon"
+      ],
+      "favourite": true
+    },
+    {
+      "id": 129,
+      "name": "magikarp",
+      "description": "Magikarp is a fishlike Pokémon with large, heavy reddish-orange scales. It has large, vacant eyes and pink lips. Its pectoral and tail fins are white. On its back is a stiff, three-peaked yellow fin, resembling a crown; there is an identical fin on its underside. It also has long barbels. The barbels are white on a female and pale-yellow on a male. A long-lived Magikarp is able to utilize its immense splashing power to leap high enough to scale mountains. It also has a strong enough immune system to survive in the most polluted of waters. However, it is usually overlooked by Trainers because of its perceived weakness: even in the heat of battle, it will do nothing but flop around. It is believed that the ancestors of Magikarp were actually much stronger than modern Magikarp, and this led scientists to research this species.",
+      "type": [
+        "water"
+      ],
+      "favourite": true
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

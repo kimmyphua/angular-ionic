@@ -1,17 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-app>
+  <ion-header translucent>
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title>Searchbar</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      
+      <ion-searchbar [(ngModel)]="searchText" name="searchText" (ionChange)="filter()"></ion-searchbar>
+        
+    
     </ion-toolbar>
   </ion-header>
+  <ion-content fullscreen>
+    <ion-list>
+      <ion-item *ngFor="let place of filteredPlaces">{{place}}</ion-item>
+   
+    </ion-list>
+  </ion-content>
+</ion-app>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+<!-- <ion-content>
+  <ion-item>
+<form (ngSubmit)="onSubmit()">
+    <ion-label position="floating">Input Value Here</ion-label>
+    <ion-input
+      type="text"
+      name="text"
+      [(ngModel)]="text"
+      id="text"
+      ></ion-input>
+
+      
+      <ion-label position="floating">Input Value Here</ion-label>
+      <ion-input
+      type="number"
+      name="number"
+      [(ngModel)]="number"
+      [ngStyle]="{ 'background-color': '' }"
+      ></ion-input>
+      <input type="submit" value="Save" class="btn btn-block" />
+    </form>
+  </ion-item> -->
+  <!-- Default Checkbox -->
+<!-- <ion-checkbox></ion-checkbox>
+
+
+<ion-list>
+  <ion-item *ngFor="let entry of form">
+    <ion-label>{{entry.text}}</ion-label>
+   
+    <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
+
+  <div class="ion-activatable ripple-parent">
+   {{text}}
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+
+  <ion-item>
+    <ion-range min="20" max="80" step="2" value={{number}}>
+      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="end" name="sunny"></ion-icon>
+    </ion-range>
+  </ion-item>
+</ion-content> -->

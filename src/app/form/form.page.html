@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title
+      [ngStyle]="{ color: 'silver' , fontSize: '50px', fontFamily: 'Poppins, sans-serif'}"
+      >Forms</ion-title
+    >
+  </ion-toolbar>
+  <ion-toolbar>
+      
+    <ion-searchbar [(ngModel)]="searchText" name="searchText" (ionChange)="filter()" ></ion-searchbar>
+      
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row class="box">
+    <ion-col size="4" class="ion-padding">
+      <form (ngSubmit)="onSubmit()">
+        <ion-item
+          [ngStyle]="{ border: 'white 1px solid', fontFamily: 'Poppins, sans-serif'}"
+        >
+          <ion-label position="floating">ID</ion-label>
+          <ion-input name="id" [(ngModel)]="id" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item
+          [ngStyle]="{ border: 'white 1px solid', fontFamily: 'Poppins, sans-serif'}"
+        >
+          <ion-label position="floating">Name</ion-label>
+          <ion-input name="name" [(ngModel)]="name" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item class="input">
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea
+            name="description"
+            [(ngModel)]="description"
+            type="text"
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item
+          [ngStyle]="{ border: 'white 1px solid', fontFamily: 'Poppins, sans-serif'}"
+        >
+          <ion-label>Type</ion-label>
+          <ion-select
+            multiple="true"
+            cancelText="Cancel"
+            okText="Done"
+            [(ngModel)]="type"
+            name="type"
+          >
+            <ion-select-option value="grass">Grass</ion-select-option>
+            <ion-select-option value="fire">Fire</ion-select-option>
+            <ion-select-option value="water">Water</ion-select-option>
+            <ion-select-option value="rock">Rock</ion-select-option>
+            <ion-select-option value="psychic">Psychic</ion-select-option>
+            <ion-select-option value="dark">Dark</ion-select-option>
+            <ion-select-option value="ghost">Ghost</ion-select-option>
+            <ion-select-option value="flying">Flying</ion-select-option>
+            <ion-select-option value="ice">Ice</ion-select-option>
+            <ion-select-option value="poison">Poison</ion-select-option>
+            <ion-select-option value="Steel">Steel</ion-select-option>
+            <ion-select-option value="electric">Electric</ion-select-option>
+            <ion-select-option value="ground">Ground</ion-select-option>
+            <ion-select-option value="fighting">Fighting</ion-select-option>
+            <ion-select-option value="normal">Normal</ion-select-option>
+            <ion-select-option value="dragon">Dragon</ion-select-option>
+            <ion-select-option value="Fairy">Fairy</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item
+          [ngStyle]="{ border: 'white 1px solid', fontFamily: 'Poppins, sans-serif'}">
+           <ion-checkbox [(ngModel)]="favourite" name="favourite"></ion-checkbox>
+              <h3><ion-icon name="heart-outline" class="ion-margin-horizontal"></ion-icon></h3>
+               </ion-item>
+
+        <ion-button expand="block" type="submit"> Submit </ion-button>
+      </form>
+    </ion-col>
+
+    <ion-col size="8" [ngStyle]="{maxHeight: '80vh', overflow: 'scroll'}">
+      <ion-text *ngFor="let peeps of pokemon; index as i; first as isFirst">
+        <ion-card
+          (dblclick)="togglePokemon(peeps)"
+          [ngStyle]="{ cursor: 'pointer', border: peeps.favourite === true ? 'pink 1px solid' : '', fontFamily: 'Poppins, sans-serif'}"
+        >
+          <ion-card-header>
+            <!-- <span *ngIf="isFirst">Admin</span> -->
+            <ion-card-title [ngStyle]="{ color: peeps.favourite === true ? 'pink' : '' }"
+              ><ion-icon
+                *ngIf="peeps.favourite === true"
+                name="heart-outline"
+              ></ion-icon>
+              #{{peeps.id}} {{peeps.name}}
+              <ion-icon
+                (click)="deletePokemon(peeps)"
+                name="trash-outline"
+              ></ion-icon
+            ></ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Type: {{peeps.type}}
+            <br /><br />
+            {{peeps.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

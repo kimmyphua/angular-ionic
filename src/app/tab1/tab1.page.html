@@ -1,17 +1,57 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      <ion-row class="ion-justify-content-center ion-margin">
+       
+       <h2> Pokemon Database</h2>
+     
+      <ion-searchbar class="searchBar" [(ngModel)]="searchText" name="searchText" (ionChange)="getData()" ></ion-searchbar>
+   
+    </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="pokemon-box">
+    <ion-card
+      class="pokemon-content"
+      *ngFor="let i of data" >
+      <ion-card-header>
+        
+        <img [src]="i.sprites.front_default" alt="IMG" />
+      </ion-card-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-card-content (click)="selectedPoke(i.name)">
+       
+        <h2 [ngStyle]="{ margin: '0.4em'}">
+          #{{i.id}} {{i.name.charAt(0).toUpperCase()}}{{i.name.slice(1)}}
+        </h2>
+
+        <span
+          [ngStyle]="{ backgroundColor: styles[i.types[0].type.name], color: 'black', padding: '0.3em', margin: '0.2em', borderRadius : '4px' }"
+        >
+         {{ i.types[0].type.name }}
+        </span>
+        <ion-text *ngIf="i.types[1]">
+          <span
+            [ngStyle]="{ backgroundColor: styles[i.types[1].type.name], color: 'black', padding: '0.3em', margin: '0.2em', borderRadius : '4px' }"
+            >{{ i.types[1].type.name }}</span
+          >
+        </ion-text>
+
+        <br />
+        <h3>Weight: {{i.weight/10}} kg</h3>
+        <h3>Height: {{i.height/10}} m</h3>
+        <!-- <h4 *ngFor="let stat of i.stats">
+       {{stat.stat.name}} : {{stat.base_stat}} </h4> -->
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
+<ion-footer>
+  <!-- <pagination-controls
+    [ngStyle]="{backgroundColor: 'grey', color: 'pink'}"
+    (pageChange)="page=$event; getData()"
+  ></pagination-controls> -->
+</ion-footer>

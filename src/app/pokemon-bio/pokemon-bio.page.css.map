@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACX,WAAW,EAAE,EAAE;EACf,YAAY,EAAE,EAAE;EAChB,UAAU,EAAE,MAAM;EAClB,UAAU,EAAE,IAAI;EAChB,QAAQ,EAAE,MAAM;EAChB,MAAM,EAAE,cAAc;CACrB;;AAID,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EAC/B,AAAA,WAAW,CAAC;IACR,SAAS,EAAE,KAAK;GACnB",
+    "sources": [
+        "pokemon-bio.page.scss"
+    ],
+    "names": [],
+    "file": "pokemon-bio.page.css"
+}

@@ -1,0 +1,256 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> #{{info[0]?.id}} {{info[0]?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row class="ion-justify-content-center" >
+    <ion-col size="10" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+      <ion-text [ngStyle]="{fontSize: '1.3em', color: 'pink'}"> Egg Group: </ion-text>
+  </ion-col >
+  </ion-row>
+
+  <ion-row *ngFor="let egg of info[0]?.egg_groups" class="ion-justify-content-center" >
+    <ion-col size="10" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+      <ion-text > {{egg.name}}</ion-text>  
+  </ion-col >
+
+  </ion-row>
+
+  <br>
+ 
+
+
+
+
+
+
+   <ion-row class="ion-justify-content-center"> 
+     <ion-col size="7" [ngStyle]="{border: 'white 1px solid', color: 'pink', textAlign: 'right'}">
+    
+      <div [ngStyle]="{borderBottom: 'white 1px solid', height: '70px', overflow: 'scroll'}">
+      Lvl 1 <ion-icon name="arrow-forward-outline"></ion-icon>
+      </div>
+
+    <div *ngFor="let evo of evolution[0]?.chain?.evolves_to" [ngStyle]="{borderBottom: 'white 1px solid', height: '70px', overflow: 'scroll'}">
+
+      <p *ngFor=" let ev of evo?.evolution_details ">
+      
+
+      <span *ngIf="ev?.min_level">
+       Lvl
+        {{ev?.min_level}}
+        <ion-icon name="arrow-forward-outline"></ion-icon></span>
+      <span *ngIf="ev?.item">
+      
+         <ion-text color="dark"> {{ev.item.name}} </ion-text>
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+      <span *ngIf="ev?.min_happiness">
+        <ion-text color="danger">max happiness </ion-text>
+        
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+        
+      <span *ngIf="ev?.held_item">
+        Held Item:
+        <ion-text color="warning">{{ev?.held_item.name}}</ion-text>
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.known_move">
+        Needs to know
+        <ion-text color="warning">{{ev?.known_move.name}}</ion-text>
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.known_move_type">
+       Lvl up with one
+       <ion-text color="warning">{{ev?.known_move_type.name}}</ion-text>  move
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.min_affection">
+        Affection:
+        {{ev?.min_affection}}
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+      
+      <span *ngIf="ev?.trigger.name === 'trade'">
+        Trade
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.relative_physical_stats !== null">
+        {{ev?.relative_physical_stats === -1 ? 'Defense > Attack' : ev?.relative_physical_stats === 1 ? 'Attack > Defense' : 'Attack = Defense'}}
+        
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.needs_overworld_rain">
+        Rain
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.time_of_day !== ''">
+        {{ev?.time_of_day}}
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.party_species">
+        With {{ev?.party_species.name}} in party
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.min_beauty">
+        Max Beauty && Level Up
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.gender">
+        {{ev?.gender === 1 ? "female" : "male"}}
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.party_type">
+        With <ion-text color="success">{{ev?.party_type.name}}</ion-text> type in party
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+    
+      <span *ngIf="ev?.location">
+        Lvl up at <ion-text color="warning">{{ev?.location.name}} </ion-text>
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></span>
+
+      <span *ngIf="ev?.turn_upside_down">
+         <ion-text color="warning"> holding console upside down </ion-text>
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      >
+    </span>
+        </p>
+      </div>
+
+    <!-- <ion-icon name="arrow-forward-outline"></ion-icon> -->
+    <p *ngFor="let ev of evolution[0]?.chain?.evolves_to[0].evolves_to">
+    <span
+      *ngIf="ev?.evolution_details[0]?.min_level"
+    >
+      Lvl
+      {{ev.evolution_details[0]?.min_level}}
+      <ion-icon name="arrow-forward-outline"></ion-icon
+    ></span>
+    <span
+      *ngIf="ev?.evolution_details[0]?.item"
+    >
+      
+      {{ev?.evolution_details[0]?.item.name}}
+      <ion-icon name="arrow-forward-outline"></ion-icon
+    ></span>
+    <span
+      *ngIf="ev?.evolution_details[0]?.min_happiness"
+    >
+      Happiness:
+      {{ev?.evolution_details[0]?.min_happiness}}
+      <ion-icon name="arrow-forward-outline"></ion-icon
+    ></span>
+    <span
+    *ngIf="ev?.evolution_details[0]?.held_item"
+  >
+    Held Item:
+    <ion-text color="warning"> {{ev?.evolution_details[0]?.held_item.name}} </ion-text>
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[0]?.trigger.name === 'trade'">
+    Trade
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.relative_physical_stats">
+    {{ev?.evolution_details[ev.evolution_details.length - 1]?.relative_physical_stats === -1 ? 'Defense > Attack' : ev?.evolution_details[ev.evolution_details.length - 1]?.relative_physical_stats === 1 ? 'Attack > Defense' : 'Attack = Defense'}}
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.needs_overworld_rain">
+    Rain
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.time_of_day !== ''">
+    {{ev?.evolution_details[ev.evolution_details.length - 1]?.time_of_day}}
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.party_species">
+    With <ion-text color="warning">{{ev?.evolution_details[ev.evolution_details.length - 1]?.party_species.name}} </ion-text>in party
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.min_beauty">
+    Max Beauty && Level Up
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+  <span *ngIf="ev?.evolution_details[ev.evolution_details.length - 1]?.party_type">
+    With <ion-text color="warning"> {{ev?.evolution_details[ev.evolution_details.length - 1]?.party_type.name}} </ion-text> type in party
+    <ion-icon name="arrow-forward-outline"></ion-icon
+  ></span>
+
+</p>
+  </ion-col>
+<!-- </ion-col> -->
+
+
+<ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+  <div [ngStyle]="{ color: 'pink', height: '70px' ,borderBottom: 'white 1px solid', padding: '0.8em'}">
+  <ion-text > {{evolution[0]?.chain?.species?.name}} </ion-text>
+  </div>
+
+  <div *ngFor="let ev of evolution[0]?.chain?.evolves_to" [ngStyle]="{borderBottom: 'white 1px solid', color: 'pink', height: '70px', padding: '1em'}">
+    
+    <ion-text > {{ev?.species?.name}} </ion-text>
+  </div>
+
+  <!-- <ion-icon name="arrow-forward-outline"></ion-icon> -->
+  <div *ngFor="let ev of evolution[0]?.chain?.evolves_to[0].evolves_to" [ngStyle]="{color: 'pink', height: '70px', padding: '1em'}">
+  <ion-text > 
+    {{ev?.species?.name}} </ion-text>
+  </div>
+</ion-col>
+
+<!-- </ion-col> -->
+</ion-row>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="entry-box">
+  <span *ngFor="let entry of info[0]?.flavor_text_entries">
+    <ion-row>
+    <ion-col size="2" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+      {{ entry.version.name }} 
+    </ion-col>
+    <ion-col size='8' [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+      {{ entry.flavor_text }} 
+    </ion-col>
+    <ion-col size='2' [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+      {{ entry.language.name }}
+    </ion-col>
+  </ion-row>
+  </span>
+</div>
+</ion-content>

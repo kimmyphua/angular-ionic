@@ -1,0 +1,21 @@
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+</ion-buttons>
+<ion-content>
+<ion-card>
+  <ion-card-header>
+
+    <ion-card-title>Login</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item></ion-item>
+    <ion-input placeholder="Email" type="email" [(ngModel)]="user.email"></ion-input>
+    <br>
+    <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
+    <br>
+    <ion-button expand="block" (click)="logMeIn()">Login</ion-button>
+    <ion-button expand="block" color="secondary" (click)="register()">Register</ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>

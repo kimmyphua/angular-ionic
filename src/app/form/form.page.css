@@ -1,0 +1,11 @@
+.input {
+  border: white 1px solid;
+}
+
+.box {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: auto;
+}
+/*# sourceMappingURL=form.page.css.map */

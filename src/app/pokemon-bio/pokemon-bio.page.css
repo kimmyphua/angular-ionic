@@ -1,0 +1,15 @@
+.entry-box {
+  margin-left: 8%;
+  margin-right: 8%;
+  text-align: center;
+  max-height: 50vh;
+  overflow: scroll;
+  border: pink 1px solid;
+}
+
+@media screen and (max-width: 500px) {
+  ion-content {
+    font-size: 0.7em;
+  }
+}
+/*# sourceMappingURL=pokemon-bio.page.css.map */

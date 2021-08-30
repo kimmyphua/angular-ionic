@@ -1,17 +1,63 @@
-<ion-header [translucent]="true">
+<ion-app>
+  <ion-menu side="start" content-id="main-content">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list  >
+        <ion-item button *ngFor="let tech of techs" (click)="showDetail(tech.title)">
+          <ion-icon slot="start" name="logo-{{tech.icon}}" [ngStyle]="{'background-color': tech.color}"></ion-icon>
+          <ion-label>
+            <h3>{{tech.title}}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" (click)="closeMenu()">Close</ion-button>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Ionic Iz Cool</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content >
+      <ion-row class="ion-justify-content-center ion-padding">
+        <ion-col size="6">
+          <ion-button expand="block" (click)="forms()">Forms</ion-button> <br>
+          <ion-button expand="block" (click)="auth()" color="success">Authentication</ion-button> <br>
+          <ion-button expand="block" (click)="modal()" color="warning">Modal</ion-button>  <br>
+          <ion-button expand="block" (click)="searchbar()" color="danger">Searchbar</ion-button>  <br>
+
+        </ion-col>
+      </ion-row>
+     
+    </ion-content>
+  </div>
+</ion-app>
+
+
+<div *ngFor="let i of nav" class="main">
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3" (click)="closeMenu()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{i.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content fullscreen class="ion-padding item-contents">
+  <ion-icon name="logo-{{i.icon}}" [ngStyle]="{'background-color': i.color}" size="large"></ion-icon>
+  <h2>{{i.description}}</h2>
+  <ion-text color="danger"> see more ...</ion-text> <br>
+  <ion-button (click)="this.closeMenu()">Back</ion-button>
 </ion-content>
+</div>
+
+

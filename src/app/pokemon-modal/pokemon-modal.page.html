@@ -1,0 +1,101 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> #{{pokemon[0].id}}  {{pokemon[0]?.name.toUpperCase()}} <ion-icon (click)="dismiss()" class="ion-padding-horizontal" name="close-outline"></ion-icon></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+ 
+  <div [ngStyle]="{margin: '1em'}">
+    Abilities:
+  <ion-text *ngFor="let ability of pokemon[0]?.abilities; index as i; ; last as isLast"> 
+     {{ ability.ability.name}} 
+    <span *ngIf="ability.is_hidden"> (hidden) </span> 
+    <span *ngIf="!isLast"> , </span> 
+  </ion-text>
+</div>
+
+  <ion-button (click)="fullDetails(pokemon[0].id)"> EVOLUTION && EGG GROUP </ion-button>
+
+
+
+  <ion-row class="ion-justify-content-center" >
+    <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+   Stat Type
+  </ion-col >
+  <ion-col size="5" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+    Base Stats
+  </ion-col>
+  <ion-col size="2" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+    Max
+  </ion-col>
+  <ion-col size="2" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+    Min
+  </ion-col>
+  </ion-row>
+  <span *ngFor="let stat of pokemon[0]?.stats">
+    <ion-row class="ion-justify-content-center" >
+      <ion-col size="3" [ngStyle]="{border: 'white 1px solid'}">
+    {{stat.stat.name}}
+    </ion-col>
+    <ion-col size="5" [ngStyle]="{border: 'white 1px solid'}">
+    {{stat.base_stat}} 
+    <ion-progress-bar color="{{stat.base_stat > 100 ? 'primary' : stat.base_stat > 50 ? 'tertiary' : 'danger'}}" value="{{stat.base_stat/255}}"></ion-progress-bar>
+  </ion-col>
+
+  <ion-col size="2" [ngStyle]="{border: 'white 1px solid'}">
+    {{ stat.stat.name === 'hp' ? math.floor(((2*stat.base_stat) + 31 + 252/4 )*100/100 + 100 + 10 ) : math.floor((((2*stat.base_stat) + 31 + 252/4 )*100/100 + 5 )*1.1)}}
+  </ion-col>
+
+  <ion-col size="2" [ngStyle]="{border: 'white 1px solid'}">
+    {{ stat.stat.name === 'hp' ? math.floor(((2*stat.base_stat) + 0 + 0/4 )*100/100 + 100 + 10 ) : math.floor((((2*stat.base_stat) + 0 + 0 )*100/100 + 5 )*0.9)}}
+
+  </ion-col>
+  </ion-row>
+  </span>
+  
+  <br>
+
+  <ion-row class="ion-justify-content-center" >
+    <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'pink'}">
+   Moves
+  </ion-col >
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'gold'}">
+    Move Tutor
+  </ion-col>
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'lightblue'}">
+    Level-Up
+  </ion-col>
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color: 'lightgreen'}">
+    TM
+  </ion-col>
+  </ion-row>
+  <span *ngFor="let move of pokemon[0]?.moves" >
+    <ion-row class="ion-justify-content-center" >
+    <ion-col size="3" [ngStyle]="{border: 'white 1px solid'}">
+    {{move.move.name}}
+  </ion-col >
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid', color : 'gold'}">
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='tutor'"> <ion-icon name="checkmark-outline"></ion-icon> </ion-text>
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='egg'"> Egg Move </ion-text>
+
+    <!-- <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='level-up'"> Level {{move.version_group_details[0].level_learned_at}} </ion-text>
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='machine'"> TM Move </ion-text> -->
+  </ion-col>
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid'}">
+    <!-- <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='tutor'"> Move Tutor </ion-text> -->
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='level-up'"> Level {{move.version_group_details[0].level_learned_at}} </ion-text>
+    <!-- <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='machine'"> TM Move </ion-text> -->
+  </ion-col>
+  <ion-col size="3" [ngStyle]="{border: 'white 1px solid',  color : 'lightgreen'}">
+    <!-- <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='tutor'"> Move Tutor </ion-text>
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='level-up'"> Level {{move.version_group_details[0].level_learned_at}} </ion-text> -->
+    <ion-text *ngIf="move.version_group_details[0].move_learn_method.name==='machine'"><ion-icon name="checkmark-outline"></ion-icon> </ion-text>
+  </ion-col>
+    <br>
+  </ion-row>
+  </span>
+
+
+    
+</ion-content>
